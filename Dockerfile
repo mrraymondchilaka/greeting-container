@@ -21,4 +21,4 @@ USER 10001:10001
 
 EXPOSE 8080
 
-CMD ["gunicorn", "--chdir", "app", "--bind", "0.0.0.0:8080", "--workers", "2", "--access-logfile", "-", "--error-logfile", "-", "app:app"]
+CMD ["sh", "-c", "exec gunicorn --chdir app --bind 0.0.0.0:${PORT:-8080} --workers 2 --access-logfile - --error-logfile - app:app"]
